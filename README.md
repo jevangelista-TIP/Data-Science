@@ -1,0 +1,3 @@
+👋 Hi, I'm Joel—a Computer Engineering student at the Technological University of the Philippines and a Control System Software Engineer for a utility company based in the Midwest. I thrive at the intersection of hardware and data, with a deep passion for embedded systems development using Raspberry Pi and modern Python-based data engineering and analysis.
+
+My journey blends academic rigor with real-world application, allowing me to design intelligent systems that bridge physical infrastructure with digital insight. Whether I'm optimizing control algorithms or building IoT solutions for environmental monitoring, I’m driven by the challenge of turning raw data into meaningful action.
