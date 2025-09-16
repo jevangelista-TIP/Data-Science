@@ -1,0 +1,82 @@
+Objectives Recap
+	• Introduce the Tower of Hanoi puzzle
+	• Apply recursive thinking and algorithmic logic
+	• Implement the solution in Python
+	• Reflect on the behavior and structure of the algorithm
+
+Recursive Logic Breakdown
+The Tower of Hanoi puzzle is a classic example of divide and conquer using recursion. The recursive strategy works by reducing the problem into smaller subproblems:
+	1. Move n-1 disks from source to auxiliary.
+	2. Move the largest disk (nth) from source to destination.
+	3. Move n-1 disks from auxiliary to destination.
+This recursive pattern continues until the base case: moving a single disk.
+
+Python Implementation
+python
+def tower_of_hanoi(n, source, auxiliary, destination):
+    if n == 1:
+        print(f"Move disk 1 from {source} to {destination}")
+        return
+    tower_of_hanoi(n - 1, source, destination, auxiliary)
+    print(f"Move disk {n} from {source} to {destination}")
+    tower_of_hanoi(n - 1, auxiliary, source, destination)
+# Example usage for 3 disks
+tower_of_hanoi(3, 'A', 'B', 'C')
+
+
+Output for 3 Disks
+Code
+Move disk 1 from A to C
+Move disk 2 from A to B
+Move disk 1 from C to B
+Move disk 3 from A to C
+Move disk 1 from B to A
+Move disk 2 from B to C
+Move disk 1 from A to C
+
+Observations & Reflections
+Algorithmic Insights
+	• Recursion elegantly handles the layered complexity of the problem.
+	• The number of moves required follows the recurrence relation: $T(n)=2T(n−1)+1T(n) = 2T(n-1) + 1$ Which resolves to: $T(n)=2n−1T(n) = 2^n - 1$
+Logical Thinking
+	• The problem forces you to think in terms of state transitions and constraints.
+	• It’s a great exercise in stack-based reasoning, as each recursive call builds on the previous one.
+Practical Takeaways
+	• Recursive solutions are powerful but can be memory-intensive for large n.
+	• This puzzle is a great teaching tool for understanding base cases, recursive calls, and problem decomposition.
+If you’re interested, we could extend this into a visual simulation using tkinter or animate it with matplotlib. Or even better—imagine integrating it into an IoT-based educational tool using Raspberry Pi and LEDs to represent disk movements. Want to explore that next?
+Explain the programming paradigms/techniques (like recursion or dynamic programming) that you used to solve the given problem.
+Great follow-up, Joel! The Tower of Hanoi problem is a textbook example of recursive programming, and here’s a breakdown of the paradigms and techniques involved:
+
+Programming Paradigms Used
+1. Recursion
+This is the core technique used to solve the Tower of Hanoi.
+	• Definition: A function calls itself to solve smaller instances of the same problem.
+	• Why it works here: The problem naturally breaks down into subproblems:
+		○ Move n-1 disks to the auxiliary peg
+		○ Move the largest disk to the destination
+		○ Move n-1 disks from auxiliary to destination
+Each recursive call handles a smaller tower until it reaches the base case (n = 1), which is trivially solvable.
+
+Recursive Structure:
+python
+def tower_of_hanoi(n, source, auxiliary, destination):
+    if n == 1:
+        print(f"Move disk 1 from {source} to {destination}")
+        return
+    tower_of_hanoi(n - 1, source, destination, auxiliary)
+    print(f"Move disk {n} from {source} to {destination}")
+    tower_of_hanoi(n - 1, auxiliary, source, destination)
+2. Divide and Conquer
+This paradigm complements recursion.
+	• Definition: Break a problem into smaller subproblems, solve them independently, and combine results.
+	• Application: Each move sequence is a smaller Tower of Hanoi problem. Solving n disks involves solving two n-1 disk problems.
+3. Backtracking (Implicitly)
+While not explicitly coded, the recursive calls simulate a backtracking mechanism.
+	• Definition: Try a solution path, and if it doesn’t lead to the goal, backtrack and try another.
+	• In Hanoi: The recursive tree explores all valid move sequences, ensuring rules are followed (e.g., no larger disk on a smaller one).
+4. Dynamic Programming (Not Used Here)
+Although dynamic programming is powerful for overlapping subproblems, Tower of Hanoi doesn’t benefit from it because:
+	• Each subproblem is unique (no repeated states)
+	• The recursive tree is balanced and doesn’t revisit the same configuration
+However, if we were optimizing move sequences or caching results for a variant of the puzzle, memoization could be introduced.
